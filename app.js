@@ -1,7 +1,7 @@
 const { Console } = require("console");
 const express = require("express");
 const mongoose = require("mongoose");
-const Product = require("./models/productModel");
+const Employee = require("./models/employeeModel");
 const app = express();
 
 app.use(express.json());
@@ -15,70 +15,70 @@ app.get("/another", (req, res) => {
   res.send("This is another page for made for routing");
 });
 
-// Read product or Fetch product
+// Read Employee or Fetch
 
-app.get("/products", async (req, res) => {
+app.get("/employees", async (req, res) => {
   try {
-    const product = await Product.find(req.body);
-    res.status(200).json(product);
+    const employee = await Employee.find(req.body);
+    res.status(200).json(employee);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });
   }
 });
 
-// find or search product using ID
-app.get("/products/:id", async (req, res) => {
+// find or search Employee using ID
+app.get("/employees/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findById(id);
-    res.status(200).json(product);
+    const employee = await Employee.findById(id);
+    res.status(200).json(employee);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });
   }
 });
 
-// Create a new product 
-app.post("/products", async (req, res) => {
+// Create a new Employee
+app.post("/employees", async (req, res) => {
   try {
-    const product = await Product.create(req.body);
-    res.status(200).json(product);
+    const employee = await Employee.create(req.body);
+    res.status(200).json(employee);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });
   }
 });
 
-//Update product 
+//Update Employee
 
-app.put("/products/:id", async (req, res) => {
+app.put("/employees/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const product = await Product.findByIdAndUpdate(id,req.body);
-      if(!product){
+      const employee = await Employee.findByIdAndUpdate(id,req.body);
+      if(!employee){
       return res.status(404).json({message: `cannot find product with ID ${id}`})
      
     }
-    const updatedProduct = await Product.findById(id);
-    res.status(200).json(updatedProduct);
+    const updatedEmployee = await Employee.findById(id);
+    res.status(200).json(updatedEmployee);
     } catch (error) {
       console.log(error.message);
       res.status(500).json({ message: error.message });
     }
   });
-//Delete a product
+//Delete an Employee
 
-app.delete("/products/:id", async (req, res) => {
+app.delete("/employees/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const product = await Product.findByIdAndDelete(id);
-      if(!product){
+      const employee = await Employee.findByIdAndDelete(id);
+      if(!employee){
       return res.status(404).json({message: `cannot find product with ID ${id} it has been changed or deleted`})
      
     }
-    const deletedProduct = await Product.findById(id);
-    res.status(200).json(deletedProduct); 
+    const deletedEmployee = await Employee.findById(id);
+    res.status(200).json(deletedEmployee); 
     } catch (error) {
       console.log(error.message);
       res.status(500).json({ message: error.message });
