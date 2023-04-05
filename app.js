@@ -2,10 +2,11 @@ const { Console } = require("console");
 const express = require("express");
 const mongoose = require("mongoose");
 const Employee = require("./models/employeeModel");
+const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-
+app.use(cors());
 mongoose.set("strictQuery", false);
 
 app.get("/", (req, res) => {

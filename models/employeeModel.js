@@ -34,7 +34,7 @@ const employeeSchema = mongoose.Schema(
             required: true,
         
         },
-        dob: {
+        date_of_birth: {
             type: String,
             required: true,
         
