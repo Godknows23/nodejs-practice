@@ -8,35 +8,35 @@ const employeeSchema = mongoose.Schema(
 
         surname: {
             type: String,
-            required: true,
+            required: false,
             
 
         },
 
         phone: {
             type: String,
-            required: true,
+            required: false,
             
         },
 
         email: {
             type: String,
-            required: true,
+            required: false,
         
         },
         nationalId: {
             type: String,
-            required: true,
+            required: false,
         
         },
         department: {
             type: String,
-            required: true,
+            required: false,
         
         },
         date_of_birth: {
             type: String,
-            required: true,
+            required: false,
         
         },
      

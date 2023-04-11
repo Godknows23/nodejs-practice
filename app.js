@@ -41,7 +41,7 @@ app.get("/employees/:id", async (req, res) => {
 });
 
 // Create a new Employee
-app.post("/employees", async (req, res) => {
+app.post("/addemployees", async (req, res) => {
   try {
     const employee = await Employee.create(req.body);
     res.status(200).json(employee);
@@ -70,7 +70,7 @@ app.put("/employees/:id", async (req, res) => {
   });
 //Delete an Employee
 
-app.delete("/employees/:id", async (req, res) => {
+app.delete("/deleteemployees/:id", async (req, res) => {
     try {
       const { id } = req.params;
       const employee = await Employee.findByIdAndDelete(id);
